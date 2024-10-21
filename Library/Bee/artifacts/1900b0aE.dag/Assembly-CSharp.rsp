@@ -353,11 +353,8 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 -analyzer:"E:/Unity/2022.3.33f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"E:/Unity/2022.3.33f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
+"Assets/ArabicSupport/Scripts/ArabicSupport.cs"
 "Assets/Scripts/AIScript.cs"
-"Assets/Scripts/Arabic/ArabicFixer.cs"
-"Assets/Scripts/Arabic/ArabicFixer3D.cs"
-"Assets/Scripts/Arabic/ArabicFixerTMPRO.cs"
-"Assets/Scripts/Arabic/ArabicSupport.cs"
 -langversion:9.0
 /deterministic
 /optimize+

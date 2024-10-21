@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "E:\\AITranslator\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{05A9ADC3-97A7-66FA-AE2F-8C11A1739C4E}|Assembly-CSharp.csproj|e:\\aitranslator\\assets\\scripts\\aiscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{05A9ADC3-97A7-66FA-AE2F-8C11A1739C4E}|Assembly-CSharp.csproj|E:\\AITranslator\\assets\\scripts\\aiscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{05A9ADC3-97A7-66FA-AE2F-8C11A1739C4E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\aiscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -50,7 +50,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\AIScript.cs",
               "ToolTip": "E:\\AITranslator\\Assets\\Scripts\\AIScript.cs",
               "RelativeToolTip": "Assets\\Scripts\\AIScript.cs",
-              "ViewState": "AQIAAIUAAAAAAAAAAAAUwJ0AAAAqAAAA",
+              "ViewState": "AQIAACUAAAAAAAAAAAAkwDYAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-15T21:48:01.448Z",
               "EditorCaption": ""

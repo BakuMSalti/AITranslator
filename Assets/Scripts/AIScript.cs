@@ -8,6 +8,7 @@ using TMPro;
 using System.Collections;
 using Newtonsoft.Json.Linq;
 using UnityEngine.Networking;
+using ArabicSupport;
 
 public class AIScript : MonoBehaviour
 {
@@ -39,7 +40,7 @@ public class MessageContent
     public string content { get; set; }
 }
 
-    public void ArabicChecker(TMP_Text textComponent)
+    public bool ArabicChecker(TMP_Text textComponent)
     {
         // Get the selected language from the dropdown menu
         string selectedLanguage = languageDropdown.options[languageDropdown.value].text;
@@ -50,13 +51,15 @@ public class MessageContent
         // Check if the selected language is in the RTL list
         if (System.Array.Exists(rtlLanguages, lang => lang == selectedLanguage))
         {
-            textComponent.isRightToLeftText = true;
-            
+            //textComponent.isRightToLeftText = true;
+            return true;
         }
         else
         {
             textComponent.isRightToLeftText = false;
+            return false;
         }
+        return false;
     }
     public async void RequestTranslation()
     {
@@ -93,7 +96,8 @@ public class MessageContent
                                 type = "text",
                                 text = $"Translate the following text into {selectedLanguage} based on the common colloquial, informal dialect most commonly found at the following corrdinates: Latitude: {userLat.text}, Longitude: {userLon.text}. " +
                                 $"If the area specified does not have speak the specified language, use the general most popular colloquial dialect. (IE: If it was Spanish in Japan, just use colloquial Latin American Spanish since its the most popular dialect)" +
-                                $"Only include the translated text and the name of the area the coordinates map too (IE: Madrid, Spain 'Buenos dias'). \n {textToTranslate}"
+                                //$"Only include the translated text and the name of the area the coordinates map too (IE: Madrid, Spain 'Buenos dias'). \n {textToTranslate}"
+                                $"Only include the translated text (IE:'Buenos dias'). \n {textToTranslate}"
                             }
                         }
                     }
@@ -112,8 +116,14 @@ public class MessageContent
                 OpenAIResponse responseData = JsonConvert.DeserializeObject<OpenAIResponse>(rawResponse);
                 string chatResponse = responseData.choices[0].message.content;
                 Debug.Log(chatResponse);
-                ArabicChecker(resultText);
-                resultText.text = chatResponse;
+                if (ArabicChecker(resultText))
+                {
+                    resultText.text = ArabicFixer.Fix(chatResponse);
+                }
+                else
+                {
+                    resultText.text = chatResponse;
+                }
             }
             else
             {
