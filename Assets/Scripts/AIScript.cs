@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +9,7 @@ using System.Collections;
 using Newtonsoft.Json.Linq;
 using UnityEngine.Networking;
 using ArabicSupport;
+using UnityEngine.Windows;
 
 public class AIScript : MonoBehaviour
 {
@@ -48,18 +49,87 @@ public class MessageContent
         // List of RTL languages
         string[] rtlLanguages = { "Arabic", "Hebrew", "Persian", "Urdu" };
 
+
         // Check if the selected language is in the RTL list
         if (System.Array.Exists(rtlLanguages, lang => lang == selectedLanguage))
         {
-            //textComponent.isRightToLeftText = true;
+            Debug.Log("RTL detected");
+            TMP_FontAsset rtlFont = Resources.Load<TMP_FontAsset>("TSMorabaat-Bold SDF");
+            if (rtlFont != null)
+            {
+                textComponent.font = rtlFont;
+            }
             return true;
+        }
+        if (selectedLanguage == "Chinese (Simplified)" || selectedLanguage == "Cantonese (Simplified)")
+        {
+            // Switch to the ZCoolKuai font for Chinese languages
+            TMP_FontAsset zCoolKuaiFont = Resources.Load<TMP_FontAsset>("ZCOOLKuaiLe-Regular SDF");
+            if (zCoolKuaiFont != null)
+            {
+                textComponent.font = zCoolKuaiFont;
+            }
+            textComponent.isRightToLeftText = false;
+            return false;
+        }
+        if (selectedLanguage == "Japanese")
+        {
+            TMP_FontAsset japaneseFont = Resources.Load<TMP_FontAsset>("ReggaeOne-Regular SDF");
+            if (japaneseFont != null)
+            {
+                textComponent.font = japaneseFont;
+            }
+            textComponent.isRightToLeftText = false;
+            return false;
+        }
+        if (selectedLanguage == "Chinese (Traditional)" || selectedLanguage == "Cantonese (Traditional)")
+        {
+            TMP_FontAsset chntra = Resources.Load<TMP_FontAsset>("ChocolateClassicalSans-Regular SDF");
+            if (chntra != null)
+            {
+                textComponent.font = chntra;
+            }
+            textComponent.isRightToLeftText = false;
+            return false;
+        }
+        if (selectedLanguage == "Korean")
+        {
+            TMP_FontAsset korean = Resources.Load<TMP_FontAsset>("Gugi-Regular SDF");
+            if (korean != null)
+            {
+                textComponent.font = korean;
+            }
+            textComponent.isRightToLeftText = false;
+            return false;
         }
         else
         {
             textComponent.isRightToLeftText = false;
             return false;
         }
-        return false;
+    }
+
+    public string PuncFixer(string txt)
+    {
+        if (string.IsNullOrEmpty(txt))
+        {
+            return txt;
+        }
+
+        // Replace all occurrences of Asian puncuation with Latin ones
+        txt = txt.Replace("，", ", ");
+        txt = txt.Replace("？", "? ");
+        txt = txt.Replace("。", ". ");
+        txt = txt.Replace("！", "! ");
+        txt = txt.Replace("：", ": ");
+        txt = txt.Replace("（", "(");
+        txt = txt.Replace("）", ")");
+        txt = txt.Replace("；", "; ");
+        txt = txt.Replace("、", ", ");
+        txt = txt.Replace("「", "\" ");
+        txt = txt.Replace("」", "\" ");
+
+        return txt;
     }
     public async void RequestTranslation()
     {
@@ -95,7 +165,8 @@ public class MessageContent
                             {
                                 type = "text",
                                 text = $"Translate the following text into {selectedLanguage} based on the common colloquial, informal dialect most commonly found at the following corrdinates: Latitude: {userLat.text}, Longitude: {userLon.text}. " +
-                                $"If the area specified does not have speak the specified language, use the general most popular colloquial dialect. (IE: If it was Spanish in Japan, just use colloquial Latin American Spanish since its the most popular dialect)" +
+                                $"If the area specified does not have speak the specified language, use the general most popular colloquial dialect. (IE: If it was Spanish in Japan, just use colloquial Latin American Spanish since its the most popular dialect) " +
+                                //"When it comes to puncuation (such as commas, question marks, etc), only use the Latin versions of these characters for the sake of font. (IE: If translating into Japanese, use the Latin Comma U+002C instead of the Full-Width Comma U+FF0C). Only make an exception if you're translating into a right-to-left language such as Arabic." +
                                 //$"Only include the translated text and the name of the area the coordinates map too (IE: Madrid, Spain 'Buenos dias'). \n {textToTranslate}"
                                 $"Only include the translated text (IE:'Buenos dias'). \n {textToTranslate}"
                             }
@@ -122,6 +193,7 @@ public class MessageContent
                 }
                 else
                 {
+                    chatResponse = PuncFixer(chatResponse);
                     resultText.text = chatResponse;
                 }
             }

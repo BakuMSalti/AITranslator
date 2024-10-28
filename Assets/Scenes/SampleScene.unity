@@ -1577,18 +1577,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fixedText: 
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
-  tmpTextComponent: {fileID: 0}
-  OldText: 
-  OldFontSize: 0
-  rectTransform: {fileID: 0}
-  OldDeltaSize: {x: 0, y: 0}
-  OldEnabled: 0
-  OldRectTransformParents: []
-  OldScreenRect: {x: 1920, y: 1080}
-  isInitilized: 0
 --- !u!114 &784533296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2084,8 +2072,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -3717,11 +3705,29 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Spanish
       m_Image: {fileID: 0}
+    - m_Text: Polish
+      m_Image: {fileID: 0}
     - m_Text: Arabic
+      m_Image: {fileID: 0}
+    - m_Text: Persian
+      m_Image: {fileID: 0}
+    - m_Text: Urdu
+      m_Image: {fileID: 0}
+    - m_Text: Hebrew
+      m_Image: {fileID: 0}
+    - m_Text: Chinese (Simplified)
+      m_Image: {fileID: 0}
+    - m_Text: Chinese (Traditional)
+      m_Image: {fileID: 0}
+    - m_Text: Cantonese (Traditional)
+      m_Image: {fileID: 0}
+    - m_Text: Cantonese (Simplified)
       m_Image: {fileID: 0}
     - m_Text: Japanese
       m_Image: {fileID: 0}
-    - m_Text: Hebrew
+    - m_Text: Korean
+      m_Image: {fileID: 0}
+    - m_Text: Vietnamese
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4335,18 +4341,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fixedText: 
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
-  tmpTextComponent: {fileID: 0}
-  OldText: 
-  OldFontSize: 0
-  rectTransform: {fileID: 0}
-  OldDeltaSize: {x: 0, y: 0}
-  OldEnabled: 0
-  OldRectTransformParents: []
-  OldScreenRect: {x: 1920, y: 1080}
-  isInitilized: 0
 --- !u!114 &1820947888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4774,18 +4768,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fixedText: 
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
-  tmpTextComponent: {fileID: 0}
-  OldText: 
-  OldFontSize: 0
-  rectTransform: {fileID: 0}
-  OldDeltaSize: {x: 0, y: 0}
-  OldEnabled: 0
-  OldRectTransformParents: []
-  OldScreenRect: {x: 1920, y: 1080}
-  isInitilized: 0
 --- !u!1 &1930444950
 GameObject:
   m_ObjectHideFlags: 0
